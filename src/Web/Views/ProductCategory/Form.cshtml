@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Form";
+}
+<div class="container-fluid">
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Form</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input  type="text" 
+                                    class="form-control" 
+                                    placeholder="name"
+                                    data-bind="value:FormData.name"
+                                   >
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" data-bind="click: Event.Save">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+     var actionForm = @ViewBag.ActionForm;
+</script>
+<script src="~/web/formProductCategory.js"></script>

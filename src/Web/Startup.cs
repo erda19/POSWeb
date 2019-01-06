@@ -86,7 +86,6 @@ namespace POSWeb.Web
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            //app.UseAPIResponseWrapperMiddleware();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
