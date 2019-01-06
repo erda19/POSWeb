@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using DataTablesParser;
+using Microsoft.Extensions.Primitives;
+
 namespace POSWeb.Services
 {
     public class ServiceProductCategory : IServiceProductCategory
@@ -29,5 +32,12 @@ namespace POSWeb.Services
             _genericUnitOfWork.GenericRepository<MsProductcategory>().Insert(category);
         }
 
+        public object ViewGrid(IEnumerable<KeyValuePair<string, StringValues>>  param)
+        {
+            var data = _genericUnitOfWork.GenericRepository<MsProductcategory>()
+                        .AsQueryAble();
+            var parser = new Parser<MsProductcategory>(param,data);
+            return parser.Parse();
+        }
     }
 }

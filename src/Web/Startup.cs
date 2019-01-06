@@ -17,6 +17,7 @@ using POSWeb.Services.Interface;
 using POSWeb.Services;
 using Swashbuckle.AspNetCore.Swagger;
 using VMD.RESTApiResponseWrapper.Core.Extensions;
+using Newtonsoft.Json.Serialization;
 
 namespace POSWeb.Web
 {
@@ -49,7 +50,11 @@ namespace POSWeb.Web
             services.AddScoped<IGenericUnitOfWork, GenericUnitOfWork>();
 
             AddScopeServices(services);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                 .AddJsonOptions(options =>
+                 {
+                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                 }); 
 
 
 
@@ -81,14 +86,14 @@ namespace POSWeb.Web
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseAPIResponseWrapperMiddleware();
+            //app.UseAPIResponseWrapperMiddleware();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
+            app.UseAPIResponseWrapperMiddleware();
 
         }
                
