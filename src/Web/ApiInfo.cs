@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace SalesApp.Web
+namespace POSWeb.Web
 {
     internal class ApiInfo : OpenApiInfo
     {

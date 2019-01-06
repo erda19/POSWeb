@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>SalesApp.Data</AssemblyName>
-    <RootNamespace>SalesApp.Data</RootNamespace>
+    <AssemblyName>POSWeb.Data</AssemblyName>
+    <RootNamespace>POSWeb.Data</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

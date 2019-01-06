@@ -1,9 +1,9 @@
-﻿using SalesApp.Data.Models;
+﻿using POSWeb.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SalesApp.Services.Interface
+namespace POSWeb.Services.Interface
 {
     public interface IServiceProductCategory
     {

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesApp.Repository.Interface
+namespace POSWeb.Repository.Interface
 {
     public interface IGenericRepository<T> where T : class
     {

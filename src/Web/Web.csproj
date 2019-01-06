@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <AssemblyName>SalesApp.Web</AssemblyName>
-    <RootNamespace>SalesApp.Web</RootNamespace>
+    <AssemblyName>POSWeb.Web</AssemblyName>
+    <RootNamespace>POSWeb.Web</RootNamespace>
   </PropertyGroup>
 
 

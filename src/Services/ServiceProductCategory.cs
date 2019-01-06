@@ -1,11 +1,11 @@
-﻿using SalesApp.Data.Models;
-using SalesApp.Repository.Interface;
-using SalesApp.Services.Interface;
+﻿using POSWeb.Data.Models;
+using POSWeb.Repository.Interface;
+using POSWeb.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-namespace SalesApp.Services
+namespace POSWeb.Services
 {
     public class ServiceProductCategory : IServiceProductCategory
     {

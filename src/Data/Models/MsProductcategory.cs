@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SalesApp.Data.Models
+namespace POSWeb.Data.Models
 {
     public partial class MsProductcategory
     {

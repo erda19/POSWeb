@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SalesApp.Data.Models;
+using POSWeb.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using SalesApp.Repository.Interface;
-using SalesApp.Repository;
-using SalesApp.Services.Interface;
-using SalesApp.Services;
+using POSWeb.Repository.Interface;
+using POSWeb.Repository;
+using POSWeb.Services.Interface;
+using POSWeb.Services;
 using Swashbuckle.AspNetCore.Swagger;
 using VMD.RESTApiResponseWrapper.Core.Extensions;
 
-namespace SalesApp.Web
+namespace POSWeb.Web
 {
     public class Startup
     {

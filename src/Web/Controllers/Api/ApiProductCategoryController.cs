@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SalesApp.Services.Common;
-using SalesApp.Services.Interface;
+using POSWeb.Services.Common;
+using POSWeb.Services.Interface;
 using VMD.RESTApiResponseWrapper.Core.Wrappers;
 
-namespace SalesApp.Web.Controllers.Api
+namespace POSWeb.Web.Controllers.Api
 {
     public class ApiProductCategoryController : ApiBaseController
     {

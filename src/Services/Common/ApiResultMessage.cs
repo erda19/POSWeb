@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SalesApp.Services.Common
+namespace POSWeb.Services.Common
 {
     public static class ApiResultMessage
     {

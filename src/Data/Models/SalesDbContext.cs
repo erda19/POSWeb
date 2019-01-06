@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace SalesApp.Data.Models
+namespace POSWeb.Data.Models
 {
     public partial class SalesDbContext : DbContext
     {

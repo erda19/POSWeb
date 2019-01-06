@@ -1,10 +1,10 @@
-﻿using SalesApp.Data.Models;
+﻿using POSWeb.Data.Models;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SalesApp.Repository.Interface
+namespace POSWeb.Repository.Interface
 {
     public interface IGenericUnitOfWork
     {

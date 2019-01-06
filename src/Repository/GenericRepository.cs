@@ -1,6 +1,6 @@
-﻿using SalesApp.Data.Models;
+﻿using POSWeb.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using SalesApp.Repository.Interface;
+using POSWeb.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesApp.Repository
+namespace POSWeb.Repository
 {
     class GenericRepository<T> : IDisposable, IGenericRepository<T> where T : class
     {
