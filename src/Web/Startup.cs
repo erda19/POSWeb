@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SalesApp.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using SalesApp.Repository.Interface;
+using SalesApp.Repository;
+using SalesApp.Services.Interface;
+using SalesApp.Services;
+using Swashbuckle.AspNetCore.Swagger;
+using VMD.RESTApiResponseWrapper.Core.Extensions;
 
-namespace Web
+namespace SalesApp.Web
 {
     public class Startup
     {
@@ -29,9 +38,26 @@ namespace Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDbContext<SalesDbContext>( // replace "YourDbContext" with the class name of your DbContext
+                options => options.UseMySql(Configuration.GetSection("Data:DefaultConnectionString").Value, // replace with your Connection String
+                    mysqlOptions =>
+                    {
+                        mysqlOptions.ServerVersion(new Version(8, 0, 13), ServerType.MySql); // replace with your Server Version and Type
+                    }
+            ));
 
+            services.AddScoped<IGenericUnitOfWork, GenericUnitOfWork>();
 
+            AddScopeServices(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new ApiInfo { Title = "My API", Version = "v1" });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,12 +75,28 @@ namespace Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+            app.UseAPIResponseWrapperMiddleware();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
+               
+        private void AddScopeServices(IServiceCollection services)
+        {
+            services.AddScoped<IServiceProductCategory, ServiceProductCategory>();
+        }
+
+
     }
 }
