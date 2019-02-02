@@ -45,7 +45,7 @@ namespace Web.Controllers
             });
             ViewBag.HeaderText = headerText;
             ViewBag.Breadcumb = br.GetBreadCumb();
-            ViewBag.ActionForm = ActionForm.Edit;
+            ViewBag.ActionForm = ActionForm.Insert;
             return View("Form");
         }
     }

@@ -1,0 +1,2 @@
+2019-02-03 00:25:43.034 +07:00 [Warning] POSWeb.Web.Controllers.HomeController test
+2019-02-03 00:25:43.789 +07:00 [Warning] POSWeb.Web.Controllers.HomeController test

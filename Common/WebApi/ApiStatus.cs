@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace POSWeb.Services.Common
+namespace POSWeb.Common.WebApi
 {
-    public static class ApiStatus
+    public class ApiStatus
     {
         public const int Error = 0;
         public const int Success = 1;

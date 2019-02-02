@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace POSWeb.Services.Common
+namespace POSWeb.Common.WebApi
 {
-    public static class ApiResultMessage
+    public class ApiResultMessage
     {
         public const string Success = "Success";
     }

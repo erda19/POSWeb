@@ -15,9 +15,11 @@ using POSWeb.Repository.Interface;
 using POSWeb.Repository;
 using POSWeb.Services.Interface;
 using POSWeb.Services;
-using Swashbuckle.AspNetCore.Swagger;
-using VMD.RESTApiResponseWrapper.Core.Extensions;
 using Newtonsoft.Json.Serialization;
+using POSWeb.Web.ApiModels;
+using POSWeb.Web.Constant;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace POSWeb.Web
 {
@@ -50,6 +52,10 @@ namespace POSWeb.Web
             services.AddScoped<IGenericUnitOfWork, GenericUnitOfWork>();
 
             AddScopeServices(services);
+            services.AddTransient<ApiResponse>();
+            services.AddTransient<ApiResultMessage>();
+            services.AddTransient<ApiStatus>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                  .AddJsonOptions(options =>
                  {
@@ -63,11 +69,13 @@ namespace POSWeb.Web
                 c.SwaggerDoc("v1", new ApiInfo { Title = "My API", Version = "v1" });
             });
 
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddSerilog();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -92,7 +100,6 @@ namespace POSWeb.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.UseAPIResponseWrapperMiddleware();
 
         }
                

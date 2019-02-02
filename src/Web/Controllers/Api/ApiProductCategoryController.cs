@@ -3,34 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
-using POSWeb.Services.Common;
 using POSWeb.Services.Interface;
-using VMD.RESTApiResponseWrapper.Core.Wrappers;
 using POSWeb.Web.Helper;
 namespace POSWeb.Web.Controllers.Api
 {
     public class ApiProductCategoryController : ApiBaseController
     {
         private readonly IServiceProductCategory _serviceProductCategory;
-        public ApiProductCategoryController(IServiceProductCategory serviceProductCategory)
+        public ApiProductCategoryController(
+            IServiceProductCategory serviceProductCategory)
         {
             _serviceProductCategory = serviceProductCategory;
         }
 
-        [HttpGet(Name = "Get")]
-        public APIResponse Get()
+        [HttpGet(Name = "CheckMiddleware")]
+        public IActionResult CheckMiddleware()
         {
-            try
-            {
-                var a = _serviceProductCategory.GetCategory().ToList();
-            }
-            catch (Exception e)
-            {
-                throw new ApiException("t");
-            }
-            //throw new ApiException("t");
-            return new APIResponse(ApiStatus.Success, ApiResultMessage.Success, "");
+            throw new Exception("test");
+            //return Json(new ApiResponse { Message="", Status = 0, Result = null  });
         }
 
         [HttpGet(Name = "ViewGrid")]
